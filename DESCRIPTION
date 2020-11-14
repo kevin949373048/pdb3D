@@ -1,0 +1,16 @@
+Package: pdb3D
+Type: Package
+Title: protein structure visualization
+Version: 0.1.0
+Author: person("Wenkai", "Cao", email = "wenkai.cao@mail.utoronto.ca", role = c("aut", "cre"))
+Maintainer: Wenkai cao <wenkai.cao@mail.utoronto.ca>
+Description: Obtains PDB file by using pdb id. Visualize protein structure by using pdb file.
+    Visualize protein strucutre by using 3dmol.js and present the possible pFam structure in the protein structure.
+License: MIT + file LICENSE
+URL: https://github.com/kevin949373048/pdb3D
+Imports:
+  shiny,
+  bio3d
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
