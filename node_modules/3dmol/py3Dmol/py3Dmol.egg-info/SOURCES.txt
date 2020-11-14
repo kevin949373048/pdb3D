@@ -1,0 +1,11 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+py3Dmol/__init__.py
+py3Dmol.egg-info/PKG-INFO
+py3Dmol.egg-info/SOURCES.txt
+py3Dmol.egg-info/dependency_links.txt
+py3Dmol.egg-info/requires.txt
+py3Dmol.egg-info/top_level.txt
