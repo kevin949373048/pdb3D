@@ -7,22 +7,18 @@
 
 <!-- badges: end -->
 
-The goal of pdb3D is to …
+The goal of pdb3D is to visualize the 3D strucutre of protein from
+Protein Data base.
 
 ## Installation
 
 You can install the released version of pdb3D from
-[CRAN](https://CRAN.R-project.org) with:
+[GitHub](https://github.com/) with:
 
 ``` r
-install.packages("pdb3D")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("kevin949373048/pdb3D")
+require("devtools")
+devtools::install_github("kevin949373048/pdb3D", build_vignettes = TRUE)
+library("pdb3D")
 ```
 
 ## Example
@@ -56,4 +52,4 @@ You can also embed plots, for example:
 <img src="man/figures/README-pressure-1.png" width="100%" />
 
 In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+files, so they display on GitHub\! ![Caption for the picture.](1.png)
