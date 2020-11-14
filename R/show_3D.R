@@ -1,75 +1,29 @@
-#' Model Selection Via Akaike Information Criterion
+#' Display 3D Strucutre Of Protein In shiny App
 #'
-#' Performs model selection using Akaike Information Criterion (AIC).
-#' Formula: - 2 * logLikelihood + 2 * nParameters.
+#' open a 3dmol.js contained shiny app with molecule structure shown
 #'
-#' @param logLikelihood A vector with value of final log-likelihoods for
-#'      each cluster size.
-#' @param nParameters A vector with number of parameters for each
-#'      cluster size.
-#' @param clusterRunOutput Output from mixGaussianEM, if available. Default
-#'    value is NA. If provided, the vector of cluster labels obtained by
-#'    mclust::map() for best model will be provided in the output.
-#' @param gmin A positive integer specifying the minimum number of components
-#'    to be considered in the clustering run.
-#' @param gmax A positive integer, >gmin, specifying the maximum number of
-#'    components to be considered in the clustering run.
+#' @param pdbID protein database id such as "1A2B"
+#' 
 #'
-#' @return Returns an S3 object of class MPLN with results.
-#' \itemize{
-#'   \item allAICvalues - A vector of AIC values for each cluster size.
-#'   \item AICmodelselected - An integer specifying model selected by AIC.
-#'   \item AICmodelSelectedLabels - A vector of integers specifying cluster labels
-#'     for the model selected. Only provided if user input clusterRunOutput.
-#'   \item AICMessage - A character vector indicating if spurious clusters are
-#'     detected. Otherwise, NA.
-#' }
+#' @return a shiny app with protein structure shown. 
 #'
 #' @examples
 #'
-#' # Generating simulated data
-#' G <- 2 # number of true clusters/components
-#' dimension <- 6
-#' nObservations <- 100
-#' piGTrue <- c(0.8, 0.2)
+#' # Generating protein structure 
+#' show_3Dmol("1a2b")
 #'
-#' set.seed(1234)
-#' mean1 <- rep(1, dimension)
-#' mean2 <- rep(4, dimension)
-#' sigma1 <- diag(dimension) * 0.2
-#' sigma2 <- diag(dimension) * 0.5
-#'
-#' # library(mvtnorm)
-#' component1 <- mvtnorm::rmvnorm(nObservations * piGTrue[1], mean = mean1, sigma = sigma1)
-#' component2 <- mvtnorm::rmvnorm(nObservations * piGTrue[2], mean = mean2, sigma = sigma2)
-#' dataset <- rbind(component1, component2)
-#'
-#' # Cluster data
-#' clustOutput <- mixGaussian::mixGaussianEM(dataset = dataset,
-#'                                           membership = "none",
-#'                                           gmin = 1,
-#'                                           gmax = 2,
-#'                                           initMethod = "kmeans",
-#'                                           nInitIterations = 1)
-#'
-#' # Model selection
-#' AICmodel <- mixGaussian::AICFunction(logLikelihood = clustOutput$logLikelihood,
-#'                                      nParameters = clustOutput$numbParameters,
-#'                                      clusterRunOutput = clustOutput$allResults,
-#'                                      gmin = clustOutput$gmin,
-#'                                      gmax = clustOutput$gmax)
-#'
-#' @author {Anjali Silva, \email{anjali.silva@uhnresearch.ca}}
+#' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
 #'
 #' @references
-#'
-#' Akaike, H. (1973). Information theory and an extension of the maximum likelihood
-#' principle. In \emph{Second International Symposium on Information Theory}, New York, NY,
-#' USA, pp. 267–281. Springer Verlag.
+#' Nicholas Rego and David Koes 3Dmol.js: molecular visualization with WebGL
+#' \emph{Bioinformatics} (2015) 31 (8): 1322-1324 doi:10.1093/bioinformatics/btu829.
+#' 
+#' Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2020). shiny: Web Application Framework for R. \emph{R package version 1.5.0}.
+#' https://CRAN.R-project.org/package=shiny
 #'
 #' @export
 #'
-show_3Dmol <- function(var){
+show_3Dmol <- function(PDBid){
   require(shiny)
   shinyApp(
     ui <- fluidPage(
@@ -80,7 +34,7 @@ show_3Dmol <- function(var){
           tags$div(
             style="height: 1000px; width: 1000px; position: relative;",
             class='viewer_3Dmoljs',
-            'data-pdb' = var,
+            'data-pdb' = PDBid,
             'data-backgroundcolor' ='0xffffff',
             'data-style'='cartoon', 
             'data-surface'='opacity:.7;color:white', 
@@ -94,75 +48,35 @@ show_3Dmol <- function(var){
   )
 }
 
-#' Model Selection Via Akaike Information Criterion
+#' Display 3D Strucutre Styles Of Protein In shiny App
 #'
-#' Performs model selection using Akaike Information Criterion (AIC).
-#' Formula: - 2 * logLikelihood + 2 * nParameters.
+#' open a 3dmol.js website with different molecule structure styles shown with white surface prediction.
 #'
-#' @param logLikelihood A vector with value of final log-likelihoods for
-#'      each cluster size.
-#' @param nParameters A vector with number of parameters for each
-#'      cluster size.
-#' @param clusterRunOutput Output from mixGaussianEM, if available. Default
-#'    value is NA. If provided, the vector of cluster labels obtained by
-#'    mclust::map() for best model will be provided in the output.
-#' @param gmin A positive integer specifying the minimum number of components
-#'    to be considered in the clustering run.
-#' @param gmax A positive integer, >gmin, specifying the maximum number of
-#'    components to be considered in the clustering run.
+#' @param style protein structure styles such as cartoon, stick, sphere. cartoon shows structure in loops. sphere shows atoms in sphere. stick shows bonds as sticks. default style is cartoon.
+#' 
+#' @param pdbID protein database id such as "1A2B"
+#' 
+#' @param color color of the structure such as blue, green, yellow, and etc. Users can also use hex color. Default color is grey.
 #'
-#' @return Returns an S3 object of class MPLN with results.
-#' \itemize{
-#'   \item allAICvalues - A vector of AIC values for each cluster size.
-#'   \item AICmodelselected - An integer specifying model selected by AIC.
-#'   \item AICmodelSelectedLabels - A vector of integers specifying cluster labels
-#'     for the model selected. Only provided if user input clusterRunOutput.
-#'   \item AICMessage - A character vector indicating if spurious clusters are
-#'     detected. Otherwise, NA.
-#' }
+#' @return a shiny app with protein structure shown. 
 #'
 #' @examples
 #'
-#' # Generating simulated data
-#' G <- 2 # number of true clusters/components
-#' dimension <- 6
-#' nObservations <- 100
-#' piGTrue <- c(0.8, 0.2)
+#' # show 1a2b in red stick protein strucutre.
+#' changeStyle("stick", "1a2b", "red")
 #'
-#' set.seed(1234)
-#' mean1 <- rep(1, dimension)
-#' mean2 <- rep(4, dimension)
-#' sigma1 <- diag(dimension) * 0.2
-#' sigma2 <- diag(dimension) * 0.5
-#'
-#' # library(mvtnorm)
-#' component1 <- mvtnorm::rmvnorm(nObservations * piGTrue[1], mean = mean1, sigma = sigma1)
-#' component2 <- mvtnorm::rmvnorm(nObservations * piGTrue[2], mean = mean2, sigma = sigma2)
-#' dataset <- rbind(component1, component2)
-#'
-#' # Cluster data
-#' clustOutput <- mixGaussian::mixGaussianEM(dataset = dataset,
-#'                                           membership = "none",
-#'                                           gmin = 1,
-#'                                           gmax = 2,
-#'                                           initMethod = "kmeans",
-#'                                           nInitIterations = 1)
-#'
-#' # Model selection
-#' AICmodel <- mixGaussian::AICFunction(logLikelihood = clustOutput$logLikelihood,
-#'                                      nParameters = clustOutput$numbParameters,
-#'                                      clusterRunOutput = clustOutput$allResults,
-#'                                      gmin = clustOutput$gmin,
-#'                                      gmax = clustOutput$gmax)
-#'
-#' @author {Anjali Silva, \email{anjali.silva@uhnresearch.ca}}
+#' #show 1a2b in blue sphere protein strucutre.
+#' changeStyle("sphere", "1a2b", "333CFF")
+#' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
 #'
 #' @references
-#'
-#' Akaike, H. (1973). Information theory and an extension of the maximum likelihood
-#' principle. In \emph{Second International Symposium on Information Theory}, New York, NY,
-#' USA, pp. 267–281. Springer Verlag.
-#'
+#' Nicholas Rego and David Koes 3Dmol.js: molecular visualization with WebGL
+#' \emph{Bioinformatics} (2015) 31 (8): 1322-1324 doi:10.1093/bioinformatics/btu829.
+#' 
+#' Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2020). shiny: Web Application Framework for R. \emph{R package version 1.5.0}.
+#' https://CRAN.R-project.org/package=shiny
+#' 
+#' 
 #' @export
 #'
 changeStyle <- function(style= "cartoon", pdbid, color="grey"){
@@ -190,79 +104,36 @@ changeStyle <- function(style= "cartoon", pdbid, color="grey"){
   )
 }
 
-#' Model Selection Via Akaike Information Criterion
+#' Display 3D Strucutre Of Protein In shiny App
 #'
-#' Performs model selection using Akaike Information Criterion (AIC).
-#' Formula: - 2 * logLikelihood + 2 * nParameters.
+#' open a 3dmol.js contained shiny app with molecule structure shown and Pfam structure annoted.
 #'
-#' @param logLikelihood A vector with value of final log-likelihoods for
-#'      each cluster size.
-#' @param nParameters A vector with number of parameters for each
-#'      cluster size.
-#' @param clusterRunOutput Output from mixGaussianEM, if available. Default
-#'    value is NA. If provided, the vector of cluster labels obtained by
-#'    mclust::map() for best model will be provided in the output.
-#' @param gmin A positive integer specifying the minimum number of components
-#'    to be considered in the clustering run.
-#' @param gmax A positive integer, >gmin, specifying the maximum number of
-#'    components to be considered in the clustering run.
+#' @param pdbID protein database id such as "1A2B"
+#' 
 #'
-#' @return Returns an S3 object of class MPLN with results.
-#' \itemize{
-#'   \item allAICvalues - A vector of AIC values for each cluster size.
-#'   \item AICmodelselected - An integer specifying model selected by AIC.
-#'   \item AICmodelSelectedLabels - A vector of integers specifying cluster labels
-#'     for the model selected. Only provided if user input clusterRunOutput.
-#'   \item AICMessage - A character vector indicating if spurious clusters are
-#'     detected. Otherwise, NA.
-#' }
+#' @return a shiny app with protein structure shown and Pfam structure annoted.
 #'
 #' @examples
 #'
-#' # Generating simulated data
-#' G <- 2 # number of true clusters/components
-#' dimension <- 6
-#' nObservations <- 100
-#' piGTrue <- c(0.8, 0.2)
+#' # Generating protein structure with Pfam structures in blue
+#' color_Pfam("1a2b")
 #'
-#' set.seed(1234)
-#' mean1 <- rep(1, dimension)
-#' mean2 <- rep(4, dimension)
-#' sigma1 <- diag(dimension) * 0.2
-#' sigma2 <- diag(dimension) * 0.5
-#'
-#' # library(mvtnorm)
-#' component1 <- mvtnorm::rmvnorm(nObservations * piGTrue[1], mean = mean1, sigma = sigma1)
-#' component2 <- mvtnorm::rmvnorm(nObservations * piGTrue[2], mean = mean2, sigma = sigma2)
-#' dataset <- rbind(component1, component2)
-#'
-#' # Cluster data
-#' clustOutput <- mixGaussian::mixGaussianEM(dataset = dataset,
-#'                                           membership = "none",
-#'                                           gmin = 1,
-#'                                           gmax = 2,
-#'                                           initMethod = "kmeans",
-#'                                           nInitIterations = 1)
-#'
-#' # Model selection
-#' AICmodel <- mixGaussian::AICFunction(logLikelihood = clustOutput$logLikelihood,
-#'                                      nParameters = clustOutput$numbParameters,
-#'                                      clusterRunOutput = clustOutput$allResults,
-#'                                      gmin = clustOutput$gmin,
-#'                                      gmax = clustOutput$gmax)
-#'
-#' @author {Anjali Silva, \email{anjali.silva@uhnresearch.ca}}
+#' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
 #'
 #' @references
+#' Nicholas Rego and David Koes 3Dmol.js: molecular visualization with WebGL
+#' \emph{Bioinformatics} (2015) 31 (8): 1322-1324 doi:10.1093/bioinformatics/btu829.
+#' 
+#' Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2020). shiny: Web Application Framework for R. \emph{R package version 1.5.0}.
+#' https://CRAN.R-project.org/package=shiny.
 #'
-#' Akaike, H. (1973). Information theory and an extension of the maximum likelihood
-#' principle. In \emph{Second International Symposium on Information Theory}, New York, NY,
-#' USA, pp. 267–281. Springer Verlag.
-#'
+#' Grant, B.J. et al. (2006) \emph{Bioinformatics} 22, 2695--2696.
+#' 
+#' 
 #' @export
 #'
-color_pFam <- function(var){
-    aln<-bio3d::pdb.pfam(c(var), compact=FALSE)
+color_Pfam <- function(PDBid){
+    aln<-bio3d::pdb.pfam(c(PDBid), compact=FALSE)
     i <- 1
     c <-"resi:"
     while (i < length(aln$pdbResNumStart)+1) {
@@ -280,7 +151,7 @@ color_pFam <- function(var){
             tags$div(
               style="height: 400px; width: 400px; position: relative;",
               class='viewer_3Dmoljs',
-              'data-pdb' = var,
+              'data-pdb' = PDBid,
               'data-backgroundcolor' ='0xffffff',
               'data-select1'=c, 
               'data-style1'='cartoon:color=blue', 
