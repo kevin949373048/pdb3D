@@ -26,16 +26,35 @@ knitr::opts_chunk$set(
 
 ## Details
  
-
- 
 ### __*show3Dmol*__ 
-open a 3dmol.js contained shiny app with molecule structure shown
+open a 3dmol.js contained shiny app with molecule structure shown 
+parameter: **pdbID** protein database id such as "1A2B"
+```{}
+show3Dmol("1a2b")
+```
+![Caption for the picture.](../extraData/2.png)
 
+### __*changeStyle*__ 
+ open a 3dmol.js website with different molecule structure styles shown with white surface prediction.
+  parameters: **style**: protein structure styles such as cartoon, stick, sphere. cartoon shows structure in loops. sphere shows atoms in sphere. stick shows bonds as sticks. default style is cartoon.
 
-### changeStyle
+ **pdbID**: protein database id such as "1A2B"
 
-### color_Pfam
+  **color**: color of the structure such as blue, green, yellow, and etc. Users can also use hex color. Default color is grey.
+```{}
+changeStyle("stick", "1a2b", "red")
 
+```
+![Caption for the picture.](../extraData/1.png)
+
+### __*color_Pfam*__ 
+open a 3dmol.js contained shiny app with molecule structure shown and Pfam structure annoted.
+parameter: **pdbID** protein database id such as "1A2B"
+
+```{}
+colorPfam("1a2b")
+```
+![Caption for the picture.](../extraData/3.png)
 
 
 
@@ -50,7 +69,7 @@ WebGL *Bioinformatics* (2015) 31 (8): 1322-1324
 (2020). shiny: Web Application Framework for R. *R package version
 1.5.0*. <https://CRAN.R-project.org/package=shiny>.
 
-* Grant, B.J. et al. (2006) *Bioinformatics* 22, 2695–2696.
+* Grant, B.J. et al.(2006) *Bioinformatics* 22, 2695–2696.
 
 * S. El-Gebali, J. Mistry, A. Bateman, S.R. Eddy, A. Luciani, S.C. Potter,
 M. Qureshi, L.J. Richardson, G.A. Salazar, A. Smart, E.L.L. Sonnhammer,

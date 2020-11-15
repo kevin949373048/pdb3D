@@ -48,6 +48,33 @@ show3Dmol <- function(PDBid){
   )
 }
 
+#' reformate the input 
+#'
+#' @param style protein structure styles such as cartoon, stick, sphere. cartoon shows structure in loops. sphere shows atoms in sphere. stick shows bonds as sticks. default style is cartoon.
+#' 
+
+#' @param color color of the structure such as blue, green, yellow, and etc. Users can also use hex color. Default color is grey.
+#'
+#' @return new formated string 
+#'
+#' @examples
+#'
+#' # show 1a2b in red stick protein strucutre.
+#' parseSpec("stick", "red")
+#'
+#' #show 1a2b in blue sphere protein strucutre.
+#' changeStyle("sphere", "1a2b", "333CFF")
+#' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
+#'
+#' @references
+#' 
+#' R Core Team (2019). R: A language and environment for statistical computing. \emph{R Foundation for Statistical Computing}, Vienna, Austria. URL https://www.R-project.org/.
+#' 
+#' 
+parseSpec <-function(style, color){
+  return(paste0(style,":color=",color))
+}
+
 #' Display 3D Strucutre Styles Of Protein In shiny App
 #'
 #' open a 3dmol.js website with different molecule structure styles shown with white surface prediction.
@@ -80,7 +107,7 @@ show3Dmol <- function(PDBid){
 #' @export
 #'
 changeStyle <- function(style= "cartoon", pdbid, color="grey"){
-  style <- paste0(style,":color=",color)
+
   require(shiny)
   shinyApp(
     ui <- fluidPage(
@@ -91,7 +118,7 @@ changeStyle <- function(style= "cartoon", pdbid, color="grey"){
             style="height: 1000px; width: 1000px; position: relative;",
             class='viewer_3Dmoljs',
             'data-pdb' = pdbid,
-            'data-style'=style, 
+            'data-style'= parseSpec(style, color), 
             'data-backgroundcolor' ='0xffffff',
             'data-surface'='opacity:.7;color:white', 
           ))
