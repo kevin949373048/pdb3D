@@ -149,7 +149,7 @@ color_Pfam <- function(PDBid){
           fluidRow(
             tags$head(HTML('<script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>')),
             tags$div(
-              style="height: 400px; width: 400px; position: relative;",
+              style="height: 1000px; width: 1000px; position: relative;",
               class='viewer_3Dmoljs',
               'data-pdb' = PDBid,
               'data-backgroundcolor' ='0xffffff',

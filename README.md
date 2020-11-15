@@ -8,7 +8,8 @@
 <!-- badges: end -->
 
 The goal of pdb3D is to visualize the 3D strucutre of protein from
-Protein Data base.
+Protein Data base and help annote the important structures from database
+such as pFam.
 
 ## Installation
 
@@ -21,35 +22,69 @@ devtools::install_github("kevin949373048/pdb3D", build_vignettes = TRUE)
 library("pdb3D")
 ```
 
-## Example
+## Overview
 
-This is a basic example which shows you how to solve a common problem:
+pdb3D contains 3 functions.
 
-``` r
-library(pdb3D)
-## basic example code
-```
+For carrying out protein structure visualization:
+**show\_3Dmol**,**changeStyle**.
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Pfam structure annotation: **color\_Pfam**.
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+To list all functions available in the package:
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+    ls("package:pdb3D")
 
-You can also embed plots, for example:
+    changeStyle("stick", "1a2b", "red")
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+![Caption for the picture.](extraData/1.png) Figure 1, show the change
+changeStyle function
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\! ![Caption for the picture.](1.png)
+    show_3Dmol("1a2b")
+
+![Caption for the picture.](extraData/2.png) Figure 2, show the
+show\_3Dmol function display protein structure.
+
+    color_Pfam("1a2b")
+
+![Caption for the picture.](extraData/3.png) Figure 3, show the Pfam
+families highlighted in blue in the protein structure.
+
+## Tutorials
+
+For tutorials, refer to the vignette:
+
+    browseVignettes("pdb3D")
+
+## Maintainer
+
+Wenkai Cao (<wenkai.cao@mail.utoronto.ca>).
+
+## Contributions
+
+pdb3D welcomes issues, enhancement requests, and other contributions. To
+submit an issue, use the [GitHub
+issues](https://github.com/kevin949373048/pdb3D/issues).
+
+## Reference
+
+Nicholas Rego and David Koes 3Dmol.js: molecular visualization with
+WebGL *Bioinformatics* (2015) 31 (8): 1322-1324
+<doi:10.1093/bioinformatics/btu829>.
+
+Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson
+(2020). shiny: Web Application Framework for R. *R package version
+1.5.0*. <https://CRAN.R-project.org/package=shiny>.
+
+Grant, B.J. et al. (2006) *Bioinformatics* 22, 2695–2696.
+
+S. El-Gebali, J. Mistry, A. Bateman, S.R. Eddy, A. Luciani, S.C. Potter,
+M. Qureshi, L.J. Richardson, G.A. Salazar, A. Smart, E.L.L. Sonnhammer,
+L. Hirsh, L. Paladin, D. Piovesan, S.C.E. Tosatto, R.D. Finn The Pfam
+protein families database in 2019 *Nucleic Acids Research* (2019) doi:
+10.1093/nar/gky995
+
+## Acknowledgement
+
+This package was developed as part of an assessment for 2020 BCB410H:
+Applied Bioinfor-matics, University of Toronto, Toronto, CA
