@@ -1,0 +1,66 @@
+---
+title: "Introduction_pdb3D"
+author: "Wenkai Cao"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: false
+vignette: >
+  %\VignetteIndexEntry{Introduction_pdb3D}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Introduction
+ **pdb3D** visualize the 3D strucutre of protein from Protein Data base and help annote the important structures from database such as Pfam.
+
+
+## Details
+ 
+
+ 
+### __*show3Dmol*__ 
+open a 3dmol.js contained shiny app with molecule structure shown
+
+
+### changeStyle
+
+### color_Pfam
+
+
+
+
+
+## References
+
+* Nicholas Rego and David Koes 3Dmol.js: molecular visualization with
+WebGL *Bioinformatics* (2015) 31 (8): 1322-1324
+<doi:10.1093/bioinformatics/btu829>.
+
+* Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson
+(2020). shiny: Web Application Framework for R. *R package version
+1.5.0*. <https://CRAN.R-project.org/package=shiny>.
+
+* Grant, B.J. et al. (2006) *Bioinformatics* 22, 2695–2696.
+
+* S. El-Gebali, J. Mistry, A. Bateman, S.R. Eddy, A. Luciani, S.C. Potter,
+M. Qureshi, L.J. Richardson, G.A. Salazar, A. Smart, E.L.L. Sonnhammer,
+L. Hirsh, L. Paladin, D. Piovesan, S.C.E. Tosatto, R.D. Finn The Pfam
+protein families database in 2019 *Nucleic Acids Research* (2019) doi:
+10.1093/nar/gky995
+
+
+----
+
+```{r}
+sessionInfo()
+```

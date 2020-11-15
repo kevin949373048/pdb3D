@@ -9,7 +9,7 @@
 
 The goal of pdb3D is to visualize the 3D strucutre of protein from
 Protein Data base and help annote the important structures from database
-such as pFam.
+such as Pfam.
 
 ## Installation
 
@@ -27,9 +27,9 @@ library("pdb3D")
 pdb3D contains 3 functions.
 
 For carrying out protein structure visualization:
-**show\_3Dmol**,**changeStyle**.
+**show3Dmol**,**changeStyle**.
 
-Pfam structure annotation: **color\_Pfam**.
+Pfam structure annotation: **colorPfam**.
 
 To list all functions available in the package:
 
@@ -40,12 +40,12 @@ To list all functions available in the package:
 ![Caption for the picture.](extraData/1.png) Figure 1, show the change
 changeStyle function
 
-    show_3Dmol("1a2b")
+    show3Dmol("1a2b")
 
 ![Caption for the picture.](extraData/2.png) Figure 2, show the
-show\_3Dmol function display protein structure.
+show3Dmol function display protein structure.
 
-    color_Pfam("1a2b")
+    colorPfam("1a2b")
 
 ![Caption for the picture.](extraData/3.png) Figure 3, show the Pfam
 families highlighted in blue in the protein structure.

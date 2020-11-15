@@ -10,7 +10,7 @@
 #' @examples
 #'
 #' # Generating protein structure 
-#' show_3Dmol("1a2b")
+#' show3Dmol("1a2b")
 #'
 #' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
 #'
@@ -23,7 +23,7 @@
 #'
 #' @export
 #'
-show_3Dmol <- function(PDBid){
+show3Dmol <- function(PDBid){
   require(shiny)
   shinyApp(
     ui <- fluidPage(
@@ -116,7 +116,7 @@ changeStyle <- function(style= "cartoon", pdbid, color="grey"){
 #' @examples
 #'
 #' # Generating protein structure with Pfam structures in blue
-#' color_Pfam("1a2b")
+#' colorPfam("1a2b")
 #'
 #' @author {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}
 #'
@@ -132,7 +132,7 @@ changeStyle <- function(style= "cartoon", pdbid, color="grey"){
 #' 
 #' @export
 #'
-color_Pfam <- function(PDBid){
+colorPfam <- function(PDBid){
     aln<-bio3d::pdb.pfam(c(PDBid), compact=FALSE)
     i <- 1
     c <-"resi:"
