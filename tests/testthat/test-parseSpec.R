@@ -1,19 +1,7 @@
-library(shinytest)
+
 library(testthat)
 
-context("Test Shiny app")
-
-# open Shiny app and PhantomJS
-app <- ShinyDriver$new("<path to app.R>")
-
-test_that("output is correct", {
-  # set num_input to 30
-  app$setInputs(num_input = 30)
-  # get text_out
-  output <- app$getValue(name = "text_out")
-  # test
-  expect_equal(output, "The square of the number n is: n² = 900")  
+test_that("parse protein structure specs", {
+  expect_equal(parseSpec("cartoon","green"), "cartoon:color=green")
+  expect_equal(parseSpec("a","b"), "a:color=b")
 })
-
-# stop the Shiny app
-app$stop()
