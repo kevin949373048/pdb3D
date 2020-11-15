@@ -26,8 +26,8 @@ library("pdb3D")
 
 pdb3D contains 3 functions.
 
-For carrying out protein structure visualization:
-**show3Dmol**,**changeStyle**.
+For carrying out protein structure visualization: **show3Dmol**,
+**changeStyle**.
 
 Pfam structure annotation: **colorPfam**.
 
