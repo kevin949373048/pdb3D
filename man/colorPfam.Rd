@@ -2,9 +2,9 @@
 % Please edit documentation in R/show_3D.R
 \name{colorPfam}
 \alias{colorPfam}
-\title{Display 3D Strucutre Of Protein In shiny App}
+\title{Display 3D Strucutre Of Protein}
 \usage{
-colorPfam(PDBid)
+colorPfam(pdbID)
 }
 \arguments{
 \item{pdbID}{protein database id such as "1A2B"}
@@ -13,7 +13,7 @@ colorPfam(PDBid)
 a shiny app with protein structure shown and Pfam structure annoted.
 }
 \description{
-open a 3dmol.js contained shiny app with molecule structure shown and Pfam structure annoted.
+open a 3dmol.js contained htmlwidge with molecule structure shown and Pfam structure annoted.
 }
 \examples{
 

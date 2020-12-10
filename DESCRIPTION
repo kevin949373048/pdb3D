@@ -10,7 +10,9 @@ License: MIT + file LICENSE
 URL: https://github.com/kevin949373048/pdb3D
 Imports:
   shiny,
-  bio3d
+  bio3d,
+  RecordLinkage,
+  r3dmol
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

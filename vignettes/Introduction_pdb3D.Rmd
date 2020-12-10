@@ -1,5 +1,5 @@
 ---
-title: "Introduction_pdb3D"
+title: "Introduction pdb3D"
 author: "Wenkai Cao"
 date: "`r format(Sys.time(), '%d %b %Y')`"
 output: 
@@ -32,7 +32,7 @@ parameter: **pdbID** protein database id such as "1A2B"
 ```{}
 show3Dmol("1a2b")
 ```
-![Caption for the picture.](../extraData/2.png)
+![show3Dmol](../inst/extdata/2.png)
 
 ### __*changeStyle*__ 
  open a 3dmol.js website with different molecule structure styles shown with white surface prediction.
@@ -45,7 +45,7 @@ show3Dmol("1a2b")
 changeStyle("stick", "1a2b", "red")
 
 ```
-![Caption for the picture.](../extraData/1.png)
+![changeStyle.](../inst/extdata/1.png)
 
 ### __*color_Pfam*__ 
 open a 3dmol.js contained shiny app with molecule structure shown and Pfam structure annoted.
@@ -54,9 +54,17 @@ parameter: **pdbID** protein database id such as "1A2B"
 ```{}
 colorPfam("1a2b")
 ```
-![Caption for the picture.](../extraData/3.png)
+![color_Pfam.](../inst/extdata/3.png)
 
+### __*testSimilarity*__ 
+compute the similarity in sequences between two pdb files. It will round to 2 digit numbers.
 
+### __*compareTwoPDB*__ 
+compare and visualize the similarity in strucutre between two pdb files. 
+
+The Shiny app **intergrate compareTwoPDB** and **testSimilarity**
+![Shiny app interface](../inst/extdata/6.png)
+There are two input box. each provides protein id for protein below. The sequency similarity of the two proteins will be automaticly generated when user type submit. Users can rotate the protein to fully visaulize and compare the two protein structure.
 
 
 ## References
@@ -77,7 +85,12 @@ L. Hirsh, L. Paladin, D. Piovesan, S.C.E. Tosatto, R.D. Finn The Pfam
 protein families database in 2019 *Nucleic Acids Research* (2019) doi:
 10.1093/nar/gky995
 
+* Wei Su (2020). r3dmol: Create Interactive 3D Visualizations of Molecular Data. R
+  package version 0.1.0. https://github.com/swsoyee/r3dmol
 
+* Murat Sariyar and Andreas Borg (2020). RecordLinkage: Record Linkage Functions
+  for Linking and Deduplicating Data Sets. R package version 0.4-12.1.
+  https://CRAN.R-project.org/package=RecordLinkage
 ----
 
 ```{r}

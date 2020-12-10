@@ -4,14 +4,14 @@
 \alias{changeStyle}
 \title{Display 3D Strucutre Styles Of Protein In shiny App}
 \usage{
-changeStyle(style = "cartoon", pdbid, color = "grey")
+changeStyle(style = "cartoon", pdbID, color = "grey")
 }
 \arguments{
 \item{style}{protein structure styles such as cartoon, stick, sphere. cartoon shows structure in loops. sphere shows atoms in sphere. stick shows bonds as sticks. default style is cartoon.}
 
-\item{color}{color of the structure such as blue, green, yellow, and etc. Users can also use hex color. Default color is grey.}
-
 \item{pdbID}{protein database id such as "1A2B"}
+
+\item{color}{color of the structure such as blue, green, yellow, and etc. Users can also use hex color. Default color is grey.}
 }
 \value{
 a shiny app with protein structure shown.

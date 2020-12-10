@@ -7,13 +7,14 @@
 
 <!-- badges: end -->
 
-The goal of pdb3D is to visualize the 3D strucutre of protein from
-Protein Data base and help annote the important structures from database
-such as Pfam.
+pdb3D is a package to visualize the 3D strucutre of proteins from
+Protein Data base or users’ own pdb file. pdb3D annotes the important
+structures from database such as Pfam and calculate similarity between
+two pdb files.
 
 ## Installation
 
-You can install the released version of pdb3D from
+To install the released version of pdb3D from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -22,14 +23,33 @@ devtools::install_github("kevin949373048/pdb3D", build_vignettes = TRUE)
 library("pdb3D")
 ```
 
+To run the ShinyApp:
+
+``` r
+runPdb3D()
+```
+
 ## Overview
 
-pdb3D contains 3 functions.
+an overview of pdb3D is illustated below:
+
+![Caption for the picture.](./inst/extdata/4.png)
+
+pdb3D contains 6 functions.
 
 For carrying out protein structure visualization: **show3Dmol**,
 **changeStyle**.
 
+**parseSpec** is the helper function for colorPfam to have proper input
+
 Pfam structure annotation: **colorPfam**.
+
+**testSimilarity** will compare the sequence similarity of two pdb
+files. The function use RecordLinkage::levenshteinSim() to compute the
+similarity between two sequences.
+
+**compareTwoPDB** will compare the structure similarity of two pdb
+files.
 
 To list all functions available in the package:
 
@@ -37,22 +57,25 @@ To list all functions available in the package:
 
     changeStyle("stick", "1a2b", "red")
 
-![Caption for the picture.](extraData/1.png) Figure 1, show the change
-changeStyle function
+![Caption for the picture.](./inst/extdata/1.png) Figure 1, show the
+change changeStyle function
 
     show3Dmol("1a2b")
 
-![Caption for the picture.](extraData/2.png) Figure 2, show the
+![Caption for the picture.](./inst/extdata/2.png) Figure 2, show the
 show3Dmol function display protein structure.
 
     colorPfam("1a2b")
 
-![Caption for the picture.](extraData/3.png) Figure 3, show the Pfam
-families highlighted in blue in the protein structure.
+![Caption for the picture.](./inst/extdata/3.png) Figure 3, show the
+Pfam families highlighted in blue in the protein structure.
 
-## Tutorials
+Below is the shiny app version of the package. Tutorial is in Vignettes.
+![Caption for the picture.](./inst/extdata/6.png)
 
-For tutorials, refer to the vignette:
+The package tree structure is provided below: ![Caption for the
+picture.](./inst/extdata/5.png) \#\# Tutorials For tutorials, refer to
+the vignette:
 
     browseVignettes("pdb3D")
 
@@ -62,27 +85,43 @@ Wenkai Cao (<wenkai.cao@mail.utoronto.ca>).
 
 ## Contributions
 
+All functions are original idea from Wenkai Cao. The functions use
+packages from CRAN to better development. **show3Dmol**,
+**changeStyle**, **colorPfam** and **compareTwoPDB** are heabily depend
+on 3dmol.js for visualization. **colorPfam** depends on bio3D package
+for pfam data input. **show3Dmol** use r3dmol for in app visualization,
+**changeStyle**, **colorPfam** and **compareTwoPDB** depend on shiny and
+need to close the shiny app window for additional visualization.
+
 pdb3D welcomes issues, enhancement requests, and other contributions. To
 submit an issue, use the [GitHub
 issues](https://github.com/kevin949373048/pdb3D/issues).
 
 ## Reference
 
-Nicholas Rego and David Koes 3Dmol.js: molecular visualization with
-WebGL *Bioinformatics* (2015) 31 (8): 1322-1324
-<doi:10.1093/bioinformatics/btu829>.
+1.  Nicholas Rego and David Koes 3Dmol.js: molecular visualization with
+    WebGL *Bioinformatics* (2015) 31 (8): 1322-1324
+    <doi:10.1093/bioinformatics/btu829>.
 
-Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson
-(2020). shiny: Web Application Framework for R. *R package version
-1.5.0*. <https://CRAN.R-project.org/package=shiny>.
+2.  Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan
+    McPherson (2020). shiny: Web Application Framework for R. *R package
+    version 1.5.0*. <https://CRAN.R-project.org/package=shiny>.
 
-Grant, B.J. et al. (2006) *Bioinformatics* 22, 2695–2696.
+3.  Grant, B.J. et al. (2006) *Bioinformatics* 22, 2695–2696.
 
-S. El-Gebali, J. Mistry, A. Bateman, S.R. Eddy, A. Luciani, S.C. Potter,
-M. Qureshi, L.J. Richardson, G.A. Salazar, A. Smart, E.L.L. Sonnhammer,
-L. Hirsh, L. Paladin, D. Piovesan, S.C.E. Tosatto, R.D. Finn The Pfam
-protein families database in 2019 *Nucleic Acids Research* (2019) doi:
-10.1093/nar/gky995
+4.  S. El-Gebali, J. Mistry, A. Bateman, S.R. Eddy, A. Luciani, S.C.
+    Potter, M. Qureshi, L.J. Richardson, G.A. Salazar, A. Smart, E.L.L.
+    Sonnhammer, L. Hirsh, L. Paladin, D. Piovesan, S.C.E. Tosatto, R.D.
+    Finn The Pfam protein families database in 2019 *Nucleic Acids
+    Research* (2019) doi: 10.1093/nar/gky995
+
+5.  Wei Su (2020). r3dmol: Create Interactive 3D Visualizations of
+    Molecular Data. R package version 0.1.0.
+    <https://github.com/swsoyee/r3dmol>
+
+6.  Murat Sariyar and Andreas Borg (2020). RecordLinkage: Record Linkage
+    Functions for Linking and Deduplicating Data Sets. R package version
+    0.4-12.1. <https://CRAN.R-project.org/package=RecordLinkage>
 
 ## Acknowledgement
 

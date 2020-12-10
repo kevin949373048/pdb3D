@@ -2,4 +2,12 @@
 
 export(changeStyle)
 export(colorPfam)
+export(compareTwoPDB)
+export(runPdb3D)
 export(show3Dmol)
+export(testSimilarity)
+import(RecordLinkage)
+import(bio3d)
+import(r3dmol)
+import(shiny)
+importFrom(shiny,runApp)

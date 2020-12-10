@@ -4,13 +4,13 @@
 \alias{show3Dmol}
 \title{Display 3D Strucutre Of Protein In shiny App}
 \usage{
-show3Dmol(PDBid)
+show3Dmol(pdbID)
 }
 \arguments{
 \item{pdbID}{protein database id such as "1A2B"}
 }
 \value{
-a shiny app with protein structure shown.
+a 3dmol object in htmlwidgets app with protein structure shown.
 }
 \description{
 open a 3dmol.js contained shiny app with molecule structure shown
@@ -22,11 +22,11 @@ show3Dmol("1a2b")
 
 }
 \references{
-Nicholas Rego and David Koes 3Dmol.js: molecular visualization with WebGL
+1. Nicholas Rego and David Koes 3Dmol.js: molecular visualization with WebGL
 \emph{Bioinformatics} (2015) 31 (8): 1322-1324 doi:10.1093/bioinformatics/btu829.
-
-Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2020). shiny: Web Application Framework for R. \emph{R package version 1.5.0}.
-https://CRAN.R-project.org/package=shiny
+2. Wei Su (2020). r3dmol: Create Interactive 3D Visualizations of Molecular Data. R
+package version 0.1.0. https://github.com/swsoyee/r3dmol
+3. Grant, B.J. et al. (2006) Bioinformatics 22, 2695--2696.
 }
 \author{
 {Wenkai Cao, \email{Wenkai.cao@mail.utoronto.ca}}

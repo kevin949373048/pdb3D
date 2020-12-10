@@ -1,0 +1,12 @@
+citHeader("To cite pdb3D in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "pdb3D: a package to compare and visualize multiple proteins",
+  author   = "Wenkai Cao",
+  note     = "Unpublished",
+  year     = "2020",
+  textVersion = paste(
+"Cao.W. (2020) pdb3D: a package to compare and visualize multiple proteins. Unpublished. URL https://github.com/kevin949373048/pdb3D"
+  )
+)
